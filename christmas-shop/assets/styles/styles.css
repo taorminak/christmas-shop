@@ -1,73 +1,4 @@
-/* Import fonts */
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&family=Allura&display=swap');
-
-/* Root Variables */
-:root {
-  /* Primary Colors */
-  --primary: #ff4646; /* Main accent color */
-  --primary-10: rgba(255, 70, 70, 0.1); /* Main accent with 10% opacity */
-  --dark: #181c29; /* Dark color for text and backgrounds */
-
-  /* Static White Colors */
-  --static-white: #ffffff; /* Static white color */
-  --static-white-40: rgba(
-    255,
-    255,
-    255,
-    0.4
-  ); /* Static white with 40% opacity */
-  --static-white-20: rgba(
-    255,
-    255,
-    255,
-    0.2
-  ); /* Static white with 20% opacity */
-
-  /* Tag Colors */
-  --tag-purple: #4361ff; /* Tag color purple */
-  --tag-pink: #ff43f7; /* Tag color pink */
-  --tag-green: #06a44f; /* Tag color green */
-
-  /* Background Colors */
-  --content-bg: #ecf3f8;
-  --overlay: rgba(26, 27, 31, 0.8);
-
-  --base-font-family: Montserrat, sans-serif;
-  --secondary-font-family: Allura, cursive;
-  --base-font-weight: 600;
-  --base-text-transform: uppercase;
-
-  --h1-font-size: 32px;
-  --h1-line-height: 150%;
-  --h1-letter-spacing: 0.18em;
-
-  --h2-font-size: 24px;
-  --h2-line-height: 152%;
-  --h2-letter-spacing: 0.16em;
-
-  --h3-font-size: 16px;
-  --h3-line-height: 152%;
-  --h3-letter-spacing: 0.08em;
-
-  --h4-font-size: 12px;
-  --h4-line-height: 130%;
-  --h4-letter-spacing: 0.05em;
-}
-
-.tag-bg {
-  --tag-purple-bg: rgba(71, 123, 255, 0.1);
-  --tag-pink-bg: rgba(255, 105, 180, 0.1);
-  --tag-green-bg: rgba(0, 200, 83, 0.1);
-}
-
-p {
-  font-family: var(--font-primary);
-  font-size: 12px;
-  font-weight: 600;
-  line-height: 130%;
-  letter-spacing: 5%;
-  text-transform: uppercase;
-}
+@import './base.css';
 
 body {
   margin: 0;
@@ -85,7 +16,7 @@ body * {
 }
 
 section {
-  background-image: url('./images/bg-snow.png');
+  background-image: url('../images/bg-snow.png');
   margin: 0;
   padding: 0;
 }
@@ -203,7 +134,7 @@ nav {
   width: 100vw;
   transform: translate(-50%, -50%);
   height: 100%;
-  background-image: url('./images/bg-ball.png');
+  background-image: url('../images/bg-ball.png');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -663,7 +594,7 @@ nav {
   position: absolute;
   height: 100%;
   width: 100%;
-  background-image: url('./images/bg-forest.png');
+  background-image: url('../images/bg-forest.png');
   background-size: contain;
 }
 
@@ -737,7 +668,6 @@ footer {
 .footer-container {
   background: var(--static-white);
   padding: 60px 80px;
-  height: calc(100% - 120px);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -862,4 +792,3 @@ footer {
 .school-link:hover {
   color: var(--primary);
 }
-
