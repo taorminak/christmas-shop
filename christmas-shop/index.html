@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Christmas Shop</title>
     <link rel="icon" href="assets/favicon/christmas-wreath.ico" type="image/svg+xml">
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="assets/styles.css">
 </head>
 <body>
     <header class="header">
@@ -90,8 +90,8 @@
 
     <section class="special-gifts">
         <div class="special-gifts-container">       
-            <h3>Best Gifts</h3>
-            <h2>ESPECIALLY FOR YOU</h2>
+            <h3 class="special-gifts-label">Best Gifts</h3>
+            <h2 class="special-gifts-title">ESPECIALLY FOR YOU</h2>
         </div>
         <div class="gift-cards">
         
@@ -142,9 +142,11 @@
    
             <div class="cta-content">
                 <h2>READY TO START YOUR<br>JOURNEY TO A BETTER<br>VERSION OF YOURSELF?</h2>
-            <div class="cta-button"><button class="btn btn-primary">EXPLORE MAGICAL GIFTS</button></div>
+            <div class="cta-button">
+                <button class="btn btn-primary">EXPLORE MAGICAL GIFTS</button>
+            </div>
         
-        <div>The New Year is Coming Soon...</div>
+        <div class="countdown-timer-text">The New Year is Coming Soon...</div>
         <div class="countdown-timer">
             <div class="timer-cells">
                 <!-- Days -->
@@ -176,6 +178,7 @@
     </section>
 
     <footer>
+        <div class="footer-container">
         <div class="contact-info">
             <div class="contact-item">
                 <img src="assets/images/santa-claus.svg" alt="Santa Claus">
@@ -202,6 +205,7 @@
                 <div class="contact-item-text">WRITE US</div>
             </div>
         </div>
+        <div class="social-links-container">
         <div class="social-links">
             <a href="#" class="social-link"><img src="assets/images/telegram.svg" alt="Telegram"></a>
             <a href="#" class="social-link"><img src="assets/images/facebook.svg" alt="Facebook"></a>
@@ -211,6 +215,8 @@
         <div class="copyright">
             <p class="copyright-text">© Copyright 2025, All Rights Reserved</p>
             <p class="school-link">Made in Rolling Scopes School</p>
+        </div>
+        </div>
         </div>
     </footer>
 </body>
