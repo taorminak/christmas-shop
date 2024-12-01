@@ -1,11 +1,16 @@
 @import './base.css';
 
 body {
-  margin: 0;
+  margin: 0 auto;
   padding: 0;
   box-sizing: border-box;
-  width: 1440px;
+  max-width: 1440px;
+  width: 100%;
   overflow-x: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
 }
 
 body * {
@@ -18,11 +23,14 @@ body * {
 section {
   margin: 0;
   padding: 0;
+  max-width: 1440px;
+  width: 100%;
 }
 
 .header {
   background-color: var(--static-white);
-  width: 100vw;
+  max-width: 1440px;
+  width: 100%;
   height: 64px;
   padding: 12px 0;
   z-index: 10;
@@ -103,14 +111,29 @@ nav {
 }
 
 .nav-item.active {
+  color: var(--primary);
+  background-color: var(--primary-10);
+  pointer-events: none;
+  cursor: default;
+}
+
+.nav-item.active:hover {
+  background-color: transparent;
+  color: var(--primary);
+}
+
+.nav-item:not(.active):hover {
   background-color: var(--primary-10);
   color: var(--primary);
 }
 
 .main {
+  max-width: 1440px;
+  width: 100%;
   padding: 0 80px;
   background-color: var(--primary);
-  border-radius: 20px 20px 0 0;
+  border-radius: 20px;
+  overflow: hidden;
 }
 
 .special-gifts-container {
@@ -142,7 +165,7 @@ nav {
   text-transform: var(--base-text-transform);
 }
 
-.gifts-grid {
+.gifts {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 12px;
@@ -162,7 +185,7 @@ nav {
   cursor: pointer;
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
+  align-items: center;
 }
 
 .gift-card:hover {
@@ -176,12 +199,18 @@ nav {
   width: 310px;
   height: 230px;
   overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .card-image img {
+  display: block;
+  margin: 0 auto;
   width: 100%;
   height: 100%;
   object-fit: cover;
+  object-position: center;
 }
 
 .card-content {
@@ -233,7 +262,8 @@ nav {
 }
 
 footer {
-  width: 1440px;
+  max-width: 1440px;
+  width: 100%;
   height: 496px;
   box-sizing: border-box;
 }
@@ -259,7 +289,8 @@ footer {
 }
 
 .contact-item {
-  flex: 1;
+  flex: 1 1 30%;
+  min-width: 0;
   height: 204px;
   display: flex;
   flex-direction: column;
@@ -276,8 +307,9 @@ footer {
 }
 
 .contact-item img {
-  width: 80px;
-  height: 80px;
+  width: 100%;
+  max-width: 80px;
+  height: auto;
 }
 
 .contact-content {
@@ -361,6 +393,7 @@ footer {
   text-transform: none;
   color: var(--dark);
   transition: color 0.3s ease;
+  text-decoration: none;
 }
 
 .school-link:hover {
@@ -386,9 +419,17 @@ footer {
 
 .filter-tab.active {
   background-color: var(--static-white-40);
+  color: var(--static-white);
+  pointer-events: none;
+  cursor: default;
 }
 
-.filter-tab:hover {
+.filter-tab.active:hover {
+  background-color: var(--static-white-40);
+  color: var(--primary);
+}
+
+.filter-tab:not(.active):hover {
   background-color: var(--static-white-40);
 }
 

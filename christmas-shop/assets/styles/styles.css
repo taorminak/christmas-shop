@@ -1,11 +1,16 @@
 @import './base.css';
 
 body {
-  margin: 0;
+  margin: 0 auto;
   padding: 0;
   box-sizing: border-box;
-  width: 1440px;
+  max-width: 1440px;
+  width: 100%;
   overflow-x: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
 }
 
 body * {
@@ -19,11 +24,15 @@ section {
   background-image: url('../images/bg-snow.png');
   margin: 0;
   padding: 0;
+  max-width: 1440px;
+  width: 100%;
+  scroll-margin-top: 64px;
 }
 
 .header {
   background-color: var(--static-white);
-  width: 100vw;
+  max-width: 1440px;
+  width: 100%;
   height: 64px;
   padding: 12px 0;
   z-index: 10;
@@ -94,6 +103,7 @@ nav {
   line-height: 152%;
   letter-spacing: 16%;
   text-transform: uppercase;
+  cursor: pointer;
 }
 
 .nav-item:hover {
@@ -107,7 +117,7 @@ nav {
 }
 
 .hero {
-  width: 100vw;
+  max-width: 1440px;
   height: 524px;
   display: flex;
   justify-content: center;
@@ -118,6 +128,7 @@ nav {
 }
 
 .garland-bg {
+  max-width: 1440px;
   position: absolute;
   top: 0;
   left: 0;
@@ -131,7 +142,8 @@ nav {
   position: relative;
   top: 50%;
   left: 50%;
-  width: 100vw;
+  max-width: 1440px;
+  width: 100%;
   transform: translate(-50%, -50%);
   height: 100%;
   background-image: url('../images/bg-ball.png');
@@ -143,7 +155,8 @@ nav {
 
 .christmas-ball {
   position: relative;
-  width: 100vw;
+  max-width: 1440px;
+  width: 100%;
   height: 404px;
   display: flex;
   flex-direction: column;
@@ -212,7 +225,7 @@ nav {
 
 .about {
   background-color: var(--primary);
-  width: 100vw;
+  max-width: 1440px;
   height: 648px;
   padding: 0;
   margin: 0;
@@ -288,7 +301,7 @@ nav {
   border-radius: 20px;
 }
 
-.categories {
+.slider {
   background-color: var(--primary);
   display: flex;
   flex-direction: column;
@@ -301,7 +314,7 @@ nav {
   gap: 20px;
 }
 
-.categories .category-header {
+.slider .slider-header {
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -310,7 +323,7 @@ nav {
   gap: 12px;
 }
 
-.category-header h3 {
+.slider-header h3 {
   font-family: var(--secondary-font-family);
   font-size: 24px;
   font-weight: 400;
@@ -322,7 +335,7 @@ nav {
   font-weight: normal;
 }
 
-.category-header h2 {
+.slider-header h2 {
   font-family: var(--base-font-family);
   font-size: var(--h2-font-size);
   line-height: var(--h2-line-height);
@@ -332,7 +345,7 @@ nav {
   text-transform: var(--base-text-transform);
 }
 
-.category-items {
+.slider-items {
   display: flex;
   gap: 20px;
   transition: transform 0.3s ease;
@@ -345,7 +358,7 @@ nav {
   overflow: hidden;
 }
 
-.category-image {
+.slider-image {
   width: 200px;
   height: 200px;
   border-radius: 20px;
@@ -353,7 +366,7 @@ nav {
   position: relative;
 }
 
-.category-image img {
+.slider-image img {
   width: 100%;
   height: 100%;
   border-radius: 20px;
@@ -363,7 +376,7 @@ nav {
   transition: transform 0.3s ease;
 }
 
-.category-word {
+.slider-word {
   color: var(--static-white);
   font-family: var(--base-font-family);
   font-size: 80px;
@@ -433,7 +446,7 @@ nav {
 
 .special-gifts {
   background-color: var(--primary);
-  width: 100vw;
+  max-width: 1440px;
   height: 554px;
   display: flex;
   flex-direction: column;
@@ -470,15 +483,16 @@ nav {
 
 .gift-cards {
   display: grid;
-  grid-template-columns: repeat(4, 310px);
-  gap: 12px;
+  grid-template-columns: repeat(4, 1fr);
   justify-content: center;
   max-width: 1440px;
   margin: 0 auto;
   padding: 0 20px;
+  gap: 12px;
 }
 
 .gift-card {
+  width: 100%;
   max-width: 310px;
   height: 342px;
   background-color: var(--content-bg);
@@ -489,10 +503,14 @@ nav {
   cursor: pointer;
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
+  align-items: center;
 }
 
 .gift-card:hover {
+  color: var(--primary);
+}
+
+.gift-card:hover .card-title {
   color: var(--primary);
 }
 
@@ -504,7 +522,7 @@ nav {
 
 .card-image img {
   width: 100%;
-  height: 100%;
+  height: auto;
   object-fit: cover;
 }
 
@@ -561,6 +579,7 @@ nav {
   text-align: center;
   background-color: var(--primary);
   height: 668px;
+  max-width: 1440px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -593,9 +612,12 @@ nav {
 .santa-sleigh {
   position: absolute;
   height: 100%;
+  max-width: 1440px;
   width: 100%;
   background-image: url('../images/bg-forest.png');
-  background-size: contain;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
 .cta h2 {
@@ -624,11 +646,24 @@ nav {
   align-items: center;
   justify-content: center;
   border-radius: 20px;
-  background: rgba(255, 255, 255, 0.1);
+  background: var(--static-white-40);
 }
 
 .timer-cells {
   display: flex;
+  position: relative;
+}
+
+.timer-cell:not(:last-child)::after {
+  content: '';
+  position: absolute;
+  right: -4px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 1px;
+  height: 24px;
+  background-color: var(--static-white);
+  opacity: 0.4;
 }
 
 .timer-cell {
@@ -640,6 +675,7 @@ nav {
   justify-content: center;
   align-items: center;
   padding: 16px;
+  position: relative;
 }
 
 .timer-cell .number {
@@ -655,12 +691,13 @@ nav {
   font-size: 12px;
   line-height: 130%;
   letter-spacing: 0.05em;
-  color: var(--static-white-40);
+  color: var(--static-white);
   text-transform: uppercase;
 }
 
 footer {
-  width: 1440px;
+  max-width: 1440px;
+  width: 100%;
   height: 496px;
   box-sizing: border-box;
 }
@@ -677,7 +714,7 @@ footer {
 
 .contact-info {
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
   gap: 12px;
   width: 100%;
@@ -685,7 +722,8 @@ footer {
 }
 
 .contact-item {
-  flex: 1;
+  flex: 1 1 30%;
+  min-width: 0;
   height: 204px;
   display: flex;
   flex-direction: column;
@@ -702,8 +740,9 @@ footer {
 }
 
 .contact-item img {
-  width: 80px;
-  height: 80px;
+  width: 100%;
+  max-width: 80px;
+  height: auto;
 }
 
 .contact-content {
@@ -787,8 +826,14 @@ footer {
   text-transform: none;
   color: var(--dark);
   transition: color 0.3s ease;
+  text-decoration: none;
 }
 
 .school-link:hover {
   color: var(--primary);
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 64px;
 }
