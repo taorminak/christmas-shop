@@ -476,3 +476,8 @@ h1 {
   height: 100%;
   object-fit: cover;
 }
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 64px;
+}
