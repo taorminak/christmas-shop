@@ -416,7 +416,7 @@ nav {
 
 .prev.active,
 .next.active {
-  background-color: var(--content-bg);
+  background-color: transparent;
   border: 1px solid var(--content-bg);
 }
 
@@ -433,13 +433,13 @@ nav {
   filter: brightness(0) saturate(100%) invert(100%);
 }
 
-.prev:hover,
-.next:hover {
+.active:hover,
+.active:hover {
   background-color: var(--static-white);
 }
 
-.prev:hover img,
-.next:hover img {
+.active:hover img,
+.active:hover img {
   filter: brightness(0) saturate(100%) invert(32%) sepia(96%) saturate(7152%)
     hue-rotate(343deg) brightness(97%) contrast(100%);
 }
