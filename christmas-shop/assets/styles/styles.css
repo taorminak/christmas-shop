@@ -931,7 +931,7 @@ html {
     width: 20px;
     height: 2px;
     background-color: var(--dark);
-    transition: transform 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
     left: 50%;
     transform: translate(-50%);
   }
@@ -944,16 +944,14 @@ html {
     top: 8px;
   }
 
-  .burger-menu.active::before {
-    transform: translateY(7px) rotate(45deg);
-  }
-
   .burger-menu.active .burger-line {
-    opacity: 0;
+    transform: translateX(-50%) rotate(45deg);
   }
 
-  .burger-menu.active::after {
-    transform: translateY(-7px) rotate(-45deg);
+  .burger-menu.active .burger-line::before {
+    transform: rotate(-90deg);
+    top: -0.5px;
+    left: 0px;
   }
 
   .nav-links {

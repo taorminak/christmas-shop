@@ -563,28 +563,28 @@ html {
     grid-template-columns: 1fr 1fr;
   }
 
-    .gifts {
-      grid-template-columns: 1fr 1fr;
-      justify-items: center;
-      align-items: center;
-      gap: 12px;
-      padding: 0 55px;
-    }
-  
-    .filter-tabs {
-      flex-wrap: nowrap;
-      white-space: nowrap;
-      width: 100%;
-      gap: 8px;
-    }
-  
-    .filter-tab {
-      padding: 12px 20px;
-      border-radius: 12px;
-      flex-wrap: nowrap;
-      display: flex;
-      align-items: center;
-    }
+  .gifts {
+    grid-template-columns: 1fr 1fr;
+    justify-items: center;
+    align-items: center;
+    gap: 12px;
+    padding: 0 55px;
+  }
+
+  .filter-tabs {
+    flex-wrap: nowrap;
+    white-space: nowrap;
+    width: 100%;
+    gap: 8px;
+  }
+
+  .filter-tab {
+    padding: 12px 20px;
+    border-radius: 12px;
+    flex-wrap: nowrap;
+    display: flex;
+    align-items: center;
+  }
 
   footer {
     height: 100%;
@@ -631,20 +631,22 @@ html {
     top: 8px;
   }
 
-  .burger-menu.active::before {
-    transform: translateY(7px) rotate(45deg);
-  }
-
   .burger-menu.active .burger-line {
-    opacity: 0;
+    transform: translateX(-50%) rotate(45deg);
   }
 
-  .burger-menu.active::after {
-    transform: translateY(-7px) rotate(-45deg);
+  .burger-menu.active .burger-line::before {
+    transform: rotate(-90deg);
+    top: -0.5px;
+    left: 0px;
   }
-
   .nav-links {
     display: none;
+  }
+
+  .nav-item.active {
+    width: 100%;
+    flex-grow: 1;
   }
 
   .burger-menu {
@@ -697,9 +699,9 @@ html {
     padding: 60px 0px;
   }
 
-    .gifts {
-      grid-template-columns: 1fr;
-    }
+  .gifts {
+    grid-template-columns: 1fr;
+  }
 
   .about-text-container {
     margin-left: 20px;
@@ -723,25 +725,23 @@ html {
     height: 704px;
   }
 
-    
-        .filter-tabs {
-          flex-wrap: nowrap;
-          white-space: nowrap;
-          width: 100%;
-          gap: 0px;
-        }
-    
-        .filter-tab {
-          padding: 12px 8px;
-          border-radius: 12px;
-          flex-wrap: nowrap;
-          display: flex;
-          align-items: center;
-        }
+  .filter-tabs {
+    flex-wrap: nowrap;
+    white-space: nowrap;
+    width: 100%;
+    gap: 0px;
+  }
+
+  .filter-tab {
+    padding: 12px 8px;
+    border-radius: 12px;
+    flex-wrap: nowrap;
+    display: flex;
+    align-items: center;
+  }
 }
 
 @media (hover: none) {
-
   .nav-item:hover,
   .btn-primary:hover,
   .social-link:hover,
