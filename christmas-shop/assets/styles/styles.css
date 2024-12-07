@@ -854,7 +854,7 @@ html {
   }
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 1060px) {
   .header-container {
     padding: 0 8px;
   }
@@ -984,7 +984,7 @@ html {
   }
 }
 
-@media screen and (max-width: 380px) {
+@media screen and (max-width: 767px) {
   .christmas-ball {
     margin-top: 85px;
   }
