@@ -4,8 +4,8 @@ body {
   margin: 0 auto;
   padding: 0;
   box-sizing: border-box;
-  max-width: 1440px;
   width: 100%;
+  min-width: 320px;
   overflow-x: hidden;
   display: flex;
   flex-direction: column;
@@ -27,6 +27,7 @@ section {
   max-width: 1440px;
   width: 100%;
   scroll-margin-top: 64px;
+  margin: 0 auto;
 }
 
 .header {
@@ -38,6 +39,7 @@ section {
   z-index: 10;
   display: flex;
   justify-content: center;
+  margin: 0 auto;
 }
 
 .header-container {
@@ -53,6 +55,8 @@ section {
   font-size: var(--h4-font-size);
   line-height: var(--h4-line-height);
   letter-spacing: var(--h4-letter-spacing);
+  width: 100%;
+  margin: 0 auto;
 }
 
 .logo {
@@ -228,7 +232,6 @@ nav {
   max-width: 1440px;
   height: 648px;
   padding: 0;
-  margin: 0;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -580,17 +583,18 @@ nav {
   background-color: var(--primary);
   height: 668px;
   max-width: 1440px;
+  width: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   overflow: hidden;
   margin: auto;
+  border-radius: 0 0 20px 20px;
 }
 
 .cta-content {
   margin: auto;
-
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -700,6 +704,7 @@ footer {
   width: 100%;
   height: 496px;
   box-sizing: border-box;
+  margin: 0 auto;
 }
 
 .footer-container {
@@ -836,4 +841,204 @@ footer {
 html {
   scroll-behavior: smooth;
   scroll-padding-top: 64px;
+}
+
+@media screen and (max-width: 1060px) {
+  .contact-info {
+    flex-direction: column;
+  }
+
+  .contact-item {
+    width: 100%;
+    max-width: none;
+  }
+}
+
+@media screen and (max-width: 1060px) {
+  .header-container {
+    padding: 0 8px;
+  }
+
+  .nav-links {
+    display: none;
+  }
+
+  .about-container {
+    margin: 20px 8px;
+    padding: 0;
+  }
+
+  .about-text-container {
+    margin-left: 60px;
+    margin-right: 0px;
+  }
+
+  .about-text {
+    padding: 50px 50px 50px 0px;
+    gap: 20px;
+  }
+
+  .slider {
+    padding: 60px 0px;
+  }
+
+  .slider-items {
+    padding: 0 8px;
+  }
+
+  .slider-controls {
+    margin-right: 8px;
+  }
+
+  .special-gifts {
+    height: 100%;
+    height: 908px;
+  }
+
+  .gift-cards {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  footer {
+    height: 100%;
+    height: 928px;
+  }
+
+  .footer-container {
+    padding: 60px 8px;
+  }
+
+  .contact-item {
+    padding: 20px 10px;
+  }
+
+  .burger-menu {
+    display: none;
+    width: 40px;
+    height: 40px;
+    position: relative;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    margin: auto 0;
+  }
+
+  .burger-line,
+  .burger-line::before {
+    content: '';
+    position: absolute;
+    width: 20px;
+    height: 2px;
+    background-color: var(--dark);
+    transition: all 0.3s ease-in-out;
+    left: 50%;
+    transform: translate(-50%);
+  }
+
+  .burger-line {
+    top: 15px;
+  }
+
+  .burger-line::before {
+    top: 8px;
+  }
+
+  .burger-menu.active .burger-line {
+    transform: translateX(-50%) rotate(45deg);
+  }
+
+  .burger-menu.active .burger-line::before {
+    transform: rotate(-90deg);
+    top: -0.5px;
+    left: 0px;
+  }
+
+  .nav-links {
+    display: none;
+  }
+
+  .burger-menu {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .nav-links.active {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 64px;
+    left: 0;
+    width: 100%;
+    background-color: var(--static-white);
+    padding: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+
+  .nav-links.active .nav-item {
+    padding: 12px 0;
+    text-align: center;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .christmas-ball {
+    margin-top: 85px;
+  }
+
+  .hero {
+    height: 572px;
+  }
+
+  .christmas-ball-image {
+    background-size: cover;
+  }
+
+  .about {
+    height: 1000px;
+  }
+
+  .about-container {
+    grid-template-columns: 1fr;
+    height: 880px;
+  }
+
+  .about-text {
+    padding: 60px 0px;
+  }
+
+  .about-text-container {
+    margin-left: 20px;
+  }
+
+  .about-image {
+    height: 528px;
+  }
+
+  .special-gifts {
+    height: 100%;
+    height: 1616px;
+  }
+
+  .gift-cards {
+    grid-template-columns: 1fr;
+  }
+
+  .cta {
+    height: 100%;
+    height: 704px;
+  }
+}
+
+@media (hover: none) {
+  .nav-item:hover,
+  .btn-primary:hover,
+  .social-link:hover,
+  .contact-item:hover,
+  .gift-card:hover {
+    background-color: initial;
+    color: initial;
+    transform: none;
+  }
 }

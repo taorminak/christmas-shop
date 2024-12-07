@@ -477,7 +477,278 @@ h1 {
   object-fit: cover;
 }
 
+.back-to-top {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: var(--static-white);
+  border: 1px solid var(--primary);
+  cursor: pointer;
+  display: none;
+  z-index: 100;
+}
+
+.back-to-top img {
+  width: 24px;
+  height: 24px;
+  transform: rotate(-90deg);
+  color: var(--primary);
+}
+
 html {
   scroll-behavior: smooth;
   scroll-padding-top: 64px;
+}
+
+@media screen and (max-width: 1060px) {
+  .contact-info {
+    flex-direction: column;
+  }
+
+  .contact-item {
+    width: 100%;
+    max-width: none;
+  }
+}
+
+@media screen and (max-width: 1060px) {
+  .main {
+    padding: 0 10px;
+  }
+
+  .header-container {
+    padding: 0 8px;
+  }
+
+  .nav-links {
+    display: none;
+  }
+
+  .about-container {
+    margin: 20px 8px;
+    padding: 0;
+  }
+
+  .about-text-container {
+    margin-left: 60px;
+    margin-right: 0px;
+  }
+
+  .about-text {
+    padding: 50px 50px 50px 0px;
+    gap: 20px;
+  }
+
+  .slider {
+    padding: 60px 0px;
+  }
+
+  .slider-items {
+    padding: 0 8px;
+  }
+
+  .slider-controls {
+    margin-right: 8px;
+  }
+
+  .special-gifts {
+    height: 100%;
+    height: 908px;
+  }
+
+  .gift-cards {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .gifts {
+    grid-template-columns: 1fr 1fr;
+    justify-items: center;
+    align-items: center;
+    gap: 12px;
+    padding: 0 55px;
+  }
+
+  .filter-tabs {
+    flex-wrap: nowrap;
+    white-space: nowrap;
+    width: 100%;
+    gap: 8px;
+  }
+
+  .filter-tab {
+    padding: 12px 20px;
+    border-radius: 12px;
+    flex-wrap: nowrap;
+    display: flex;
+    align-items: center;
+  }
+
+  footer {
+    height: 100%;
+    height: 928px;
+  }
+
+  .footer-container {
+    padding: 60px 8px;
+  }
+
+  .contact-item {
+    padding: 20px 10px;
+  }
+
+  .burger-menu {
+    display: none;
+    width: 40px;
+    height: 40px;
+    position: relative;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    margin: auto 0;
+  }
+
+  .burger-line,
+  .burger-line::before {
+    content: '';
+    position: absolute;
+    width: 20px;
+    height: 2px;
+    background-color: var(--dark);
+    transition: transform 0.3s ease-in-out;
+    left: 50%;
+    transform: translate(-50%);
+  }
+
+  .burger-line {
+    top: 15px;
+  }
+
+  .burger-line::before {
+    top: 8px;
+  }
+
+  .burger-menu.active .burger-line {
+    transform: translateX(-50%) rotate(45deg);
+  }
+
+  .burger-menu.active .burger-line::before {
+    transform: rotate(-90deg);
+    top: -0.5px;
+    left: 0px;
+  }
+  .nav-links {
+    display: none;
+  }
+
+  .nav-item.active {
+    width: 100%;
+    flex-grow: 1;
+  }
+
+  .burger-menu {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .nav-links.active {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 64px;
+    left: 0;
+    width: 100%;
+    background-color: var(--static-white);
+    padding: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+
+  .nav-links.active .nav-item {
+    padding: 12px 0;
+    text-align: center;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .christmas-ball {
+    margin-top: 85px;
+  }
+
+  .hero {
+    height: 572px;
+  }
+
+  .christmas-ball-image {
+    background-size: cover;
+  }
+
+  .about {
+    height: 1000px;
+  }
+
+  .about-container {
+    grid-template-columns: 1fr;
+    height: 880px;
+  }
+
+  .about-text {
+    padding: 60px 0px;
+  }
+
+  .gifts {
+    grid-template-columns: 1fr;
+  }
+
+  .about-text-container {
+    margin-left: 20px;
+  }
+
+  .about-image {
+    height: 528px;
+  }
+
+  .special-gifts {
+    height: 100%;
+    height: 1616px;
+  }
+
+  .gift-cards {
+    grid-template-columns: 1fr;
+  }
+
+  .cta {
+    height: 100%;
+    height: 704px;
+  }
+
+  .filter-tabs {
+    flex-wrap: nowrap;
+    white-space: nowrap;
+    width: 100%;
+    gap: 0px;
+  }
+
+  .filter-tab {
+    padding: 12px 8px;
+    border-radius: 12px;
+    flex-wrap: nowrap;
+    display: flex;
+    align-items: center;
+  }
+}
+
+@media (hover: none) {
+  .nav-item:hover,
+  .btn-primary:hover,
+  .social-link:hover,
+  .contact-item:hover,
+  .gift-card:hover {
+    background-color: initial;
+    color: initial;
+    transform: none;
+  }
 }
