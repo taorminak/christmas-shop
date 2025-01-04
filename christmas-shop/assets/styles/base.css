@@ -1,33 +1,18 @@
-/* Import fonts */
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&family=Allura&display=swap');
 
-/* Root Variables */
 :root {
-  /* Primary Colors */
   --primary: #ff4646;
-  /* Main accent color */
   --primary-10: rgba(255, 70, 70, 0.1);
-  /* Main accent with 10% opacity */
   --dark: #181c29;
-  /* Dark color for text and backgrounds */
 
-  /* Static White Colors */
   --static-white: #ffffff;
-  /* Static white color */
   --static-white-40: rgba(255, 255, 255, 0.4);
-  /* Static white with 40% opacity */
   --static-white-20: rgba(255, 255, 255, 0.2);
-  /* Static white with 20% opacity */
 
-  /* Tag Colors */
   --tag-purple: #4361ff;
-  /* Tag color purple */
   --tag-pink: #ff43f7;
-  /* Tag color pink */
   --tag-green: #06a44f;
-  /* Tag color green */
 
-  /* Background Colors */
   --content-bg: #ecf3f8;
   --overlay: rgba(26, 27, 31, 0.8);
 

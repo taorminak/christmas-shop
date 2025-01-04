@@ -1,30 +1,62 @@
 document.addEventListener('DOMContentLoaded', function () {
   const burgerMenu = document.querySelector('.burger-menu');
   const navLinks = document.querySelector('.nav-links');
+  const navItems = document.querySelectorAll('.nav-item');
 
   if (burgerMenu && navLinks) {
-    burgerMenu.addEventListener('click', function () {
-      burgerMenu.classList.toggle('active');
-      navLinks.classList.toggle('active');
+    function toggleMenu(show) {
+      burgerMenu.classList.toggle('active', show);
+      navLinks.classList.toggle('active', show);
+      document.body.classList.toggle('menu-open', show);
+      burgerMenu.setAttribute('aria-expanded', show);
+    }
 
-      const isExpanded = burgerMenu.classList.contains('active');
-      burgerMenu.setAttribute('aria-expanded', isExpanded);
+    burgerMenu.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const willShow = !burgerMenu.classList.contains('active');
+      toggleMenu(willShow);
     });
 
-    document.addEventListener('click', function (event) {
-      if (!event.target.closest('.header-container')) {
-        burgerMenu.classList.remove('active');
-        navLinks.classList.remove('active');
-        burgerMenu.setAttribute('aria-expanded', 'false');
+    document.addEventListener('click', (event) => {
+      if (!event.target.closest('.burger-menu') && 
+          !event.target.closest('.nav-links') && 
+          navLinks.classList.contains('active')) {
+        toggleMenu(false);
+      }
+    });
+
+    navItems.forEach(item => {
+      item.addEventListener('click', (e) => {
+        const href = item.getAttribute('href');
+        
+      if (href.startsWith('#') || href.includes('#')) {
+          e.preventDefault();
+          const targetElement = document.querySelector(href);
+          if (targetElement) {
+            toggleMenu(false);
+            setTimeout(() => {
+              targetElement.scrollIntoView({ behavior: 'smooth' });
+            }, 300);
+          }
+        } else if (href === window.location.pathname || 
+                   href === window.location.pathname + window.location.hash) {
+          e.preventDefault();
+          toggleMenu(false);
+        } else {
+          toggleMenu(false);
+        }
+      });
+    });
+
+    window.addEventListener('resize', () => {
+      if (window.innerWidth > 768) {
+        toggleMenu(false);
       }
     });
   }
-});
 
-document.addEventListener('DOMContentLoaded', function () {
   const backToTop = document.querySelector('.back-to-top');
-
-  if (backToTop && window.location.href.includes('gifts.html')) {
+  if (backToTop) {
     window.addEventListener('scroll', function () {
       if (window.scrollY > 300) {
         backToTop.style.display = 'block';

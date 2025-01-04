@@ -33,7 +33,7 @@ section {
   width: 100%;
   height: 64px;
   padding: 12px 0;
-  z-index: 10;
+  z-index: 20;
   display: flex;
   justify-content: center;
 }
@@ -134,6 +134,7 @@ nav {
   background-color: var(--primary);
   border-radius: 20px;
   overflow: hidden;
+  z-index: 1;
 }
 
 .special-gifts-container {
@@ -523,10 +524,6 @@ html {
     padding: 0 8px;
   }
 
-  .nav-links {
-    display: none;
-  }
-
   .about-container {
     margin: 20px 8px;
     padding: 0;
@@ -597,79 +594,6 @@ html {
 
   .contact-item {
     padding: 20px 10px;
-  }
-
-  .burger-menu {
-    display: none;
-    width: 40px;
-    height: 40px;
-    position: relative;
-    background: transparent;
-    border: none;
-    cursor: pointer;
-    padding: 0;
-    margin: auto 0;
-  }
-
-  .burger-line,
-  .burger-line::before {
-    content: '';
-    position: absolute;
-    width: 20px;
-    height: 2px;
-    background-color: var(--dark);
-    transition: transform 0.3s ease-in-out;
-    left: 50%;
-    transform: translate(-50%);
-  }
-
-  .burger-line {
-    top: 15px;
-  }
-
-  .burger-line::before {
-    top: 8px;
-  }
-
-  .burger-menu.active .burger-line {
-    transform: translateX(-50%) rotate(45deg);
-  }
-
-  .burger-menu.active .burger-line::before {
-    transform: rotate(-90deg);
-    top: -0.5px;
-    left: 0px;
-  }
-  .nav-links {
-    display: none;
-  }
-
-  .nav-item.active {
-    width: 100%;
-    flex-grow: 1;
-  }
-
-  .burger-menu {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-
-  .nav-links.active {
-    display: flex;
-    flex-direction: column;
-    position: absolute;
-    top: 64px;
-    left: 0;
-    width: 100%;
-    background-color: var(--static-white);
-    padding: 20px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  }
-
-  .nav-links.active .nav-item {
-    padding: 12px 0;
-    text-align: center;
   }
 }
 
