@@ -351,7 +351,7 @@ nav {
 .slider-items {
   display: flex;
   gap: 20px;
-  transition: transform 0.3s ease;
+  transition: transform 0.3s ease-in-out;
   height: 200px;
   position: relative;
   padding: 0 80px;
@@ -398,8 +398,8 @@ nav {
   gap: 20px;
 }
 
-.prev,
-.next {
+.slider-prev,
+.slider-next {
   width: 56px;
   height: 56px;
   border-radius: 20px;
@@ -412,39 +412,37 @@ nav {
   justify-content: center;
 }
 
-.prev,
-.next {
+.slider-prev,
+.slider-next {
   background-color: transparent;
 }
 
-.prev.active,
-.next.active {
+.slider-prev.active,
+.slider-next.active {
   background-color: transparent;
   border: 1px solid var(--content-bg);
 }
 
-.prev.inactive,
-.next.inactive {
+.slider-prev.inactive,
+.slider-next.inactive {
   opacity: 0.5;
   cursor: not-allowed;
 }
 
-.prev img,
-.next img {
+.slider-prev img,
+.slider-next img {
   width: 24px;
   height: 24px;
   filter: brightness(0) saturate(100%) invert(100%);
 }
 
-.active:hover,
-.active:hover {
+.slider-prev.active:hover,
+.slider-next.active:hover {
   background-color: var(--static-white);
 }
 
-.active:hover img,
-.active:hover img {
-  filter: brightness(0) saturate(100%) invert(32%) sepia(96%) saturate(7152%)
-    hue-rotate(343deg) brightness(97%) contrast(100%);
+.arrow-left {
+  transform: rotate(180deg);
 }
 
 .special-gifts {
