@@ -181,4 +181,25 @@ document.addEventListener('DOMContentLoaded', function () {
       });
     });
   }
+
+  function updateTimer() {
+    const now = new Date();
+    const utcNow = new Date(now.getTime() + now.getTimezoneOffset() * 60000);
+    const currentYear = utcNow.getUTCFullYear();
+    const newYear = new Date(Date.UTC(currentYear + 1, 0, 1));
+    const diff = newYear - utcNow;
+
+    const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+    const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+
+    document.getElementById('days').textContent = days;
+    document.getElementById('hours').textContent = hours;
+    document.getElementById('minutes').textContent = minutes;
+    document.getElementById('seconds').textContent = seconds;
+  }
+
+  updateTimer();
+  setInterval(updateTimer, 1000);
 });
