@@ -1,4 +1,6 @@
 @import './base.css';
+@import './cards.css';
+@import './modal.css';
 
 body {
   margin: 0 auto;
@@ -966,8 +968,6 @@ html {
   .social-link:hover,
   .contact-item:hover,
   .gift-card:hover {
-    background-color: initial;
-    color: initial;
     transform: none;
   }
 }

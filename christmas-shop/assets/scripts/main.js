@@ -1,3 +1,7 @@
+import { Modal } from './modal.js';
+
+let modal;
+
 document.addEventListener('DOMContentLoaded', function () {
   const burgerMenu = document.querySelector('.burger-menu');
   const navLinks = document.querySelector('.nav-links');
@@ -225,12 +229,40 @@ document.addEventListener('DOMContentLoaded', function () {
     setInterval(updateTimer, 1000);
   }
 
+  let giftsArray = [];
+
+  function initializeGiftCards() {
+    const giftsCards = document.querySelectorAll('.gift-card');
+ 
+    giftsCards.forEach(giftCard => {
+      giftCard.addEventListener('click', () => {
+        const giftId = giftCard.dataset.giftId;
+        const giftData = giftsArray.find(item => item.id === giftId);
+ 
+        if (giftData) {
+          const processedGiftData = {
+            id: giftData.id,
+            image: `assets/images/gift-for-${giftData.category.split(' ')[1].toLowerCase()}.png`,
+            tagClass: giftData.category.split(' ')[1].toLowerCase(),
+            tag: giftData.category.toUpperCase(),
+            title: giftData.name,
+            description: giftData.description,
+            superpowers: giftData.superpowers
+          };
+           modal = new Modal();
+       
+          modal.open(processedGiftData);
+        }
+      });
+    });
+  }
+
   function loadGiftCards() {
     function createGiftCardHTML(card) {
       return `
-        <div class="gift-card ${card.tagClass}">
+        <div class="gift-card ${card.tagClass}" data-gift-id="${card.id}">
           <div class="card-image">
-            <img src="${card.image}" alt="${card.tag.toLowerCase()}" >
+            <img src="${card.image}" alt="${card.tag.toLowerCase()}">
           </div>
           <div class="card-content">
             <span class="card-tag ${card.tagClass}">${card.tag}</span>
@@ -243,13 +275,25 @@ document.addEventListener('DOMContentLoaded', function () {
     fetch('assets/data/gifts.json')
       .then(response => response.json())
       .then(data => {
-    
+
+        giftsArray = data.map(gift => ({
+          id: gift.id,
+          name: gift.name,
+          category: gift.category,
+          description: gift.description,
+          superpowers: gift.superpowers,
+          image: `assets/images/gift-for-${gift.category.split(' ')[1].toLowerCase()}.png`,
+          tagClass: gift.category.split(' ')[1].toLowerCase(),
+          tag: gift.category.toUpperCase()
+        }));
+        
         const bestGiftsContainer = document.querySelector('.gift-cards');
         if (bestGiftsContainer) {
           const shuffledCards = [...data]
             .sort(() => Math.random() - 0.5)
             .slice(0, 4)
             .map(card => ({
+              id: card.id,
               image: `assets/images/gift-for-${card.category.split(' ')[1].toLowerCase()}.png`,
               tagClass: card.category.split(' ')[1].toLowerCase(),
               tag: card.category.toUpperCase(),
@@ -259,15 +303,12 @@ document.addEventListener('DOMContentLoaded', function () {
           bestGiftsContainer.innerHTML = shuffledCards
             .map(createGiftCardHTML)
             .join('');
+
+          initializeGiftCards();
         }
 
         const giftsContainer = document.querySelector('.gifts .gift-cards, .gifts, main .gift-cards');
         const filterTabs = document.querySelector('.filter-tabs, .filters');
-        
-        if (giftsContainer) {
-          console.log('Gifts container:', giftsContainer);
-          console.log('Filter tabs:', filterTabs);
-        }
         
         if (giftsContainer && filterTabs) {
           const categories = [
@@ -287,15 +328,19 @@ document.addEventListener('DOMContentLoaded', function () {
             .join('');
 
           const processedCards = data.map(card => ({
+            id: card.id,
             image: `assets/images/gift-for-${card.category.split(' ')[1].toLowerCase()}.png`,
             tagClass: card.category.split(' ')[1].toLowerCase(),
             tag: card.category.toUpperCase(),
             title: card.name
           }));
 
+
           giftsContainer.innerHTML = processedCards
             .map(createGiftCardHTML)
             .join('');
+
+          initializeGiftCards();
 
           filterTabs.addEventListener('click', (e) => {
             if (e.target.classList.contains('filter-tab')) {
@@ -318,6 +363,27 @@ document.addEventListener('DOMContentLoaded', function () {
             }
           });
         }
+
+        window.addEventListener('popstate', () => {
+          modal?.destroy();
+        });
+
+        document.addEventListener('click', (e) => {
+          const link = e.target.closest('a');
+          const card = e.target.closest('.gift-card');
+          
+          if (link && link.href && !card) {
+            e.preventDefault();
+            modal?.destroy();
+            window.location.href = link.href;
+          }
+        });
+
+        window.addEventListener('load', () => {
+          if (modal && !window.location.href.includes('gifts')) {
+            modal.destroy();
+          }
+        });
       })
       .catch(error => {
         console.error('Error loading gift cards:', error);

@@ -1,0 +1,188 @@
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  padding: 20px;
+  cursor: pointer;
+}
+
+.modal-overlay.active {
+  display: flex;
+}
+
+.modal-overlay .gift-card {
+  position: relative;
+  width: 100%;
+  max-width: 400px;
+  height: auto;
+  background-color: var(--content-bg);
+  border-radius: 20px;
+  overflow: hidden;
+  cursor: default;
+}
+
+.modal-overlay .card-title,
+.modal-overlay .card-title:hover
+ {
+  transform: none !important;
+  transition: none !important;
+  cursor: default;
+  color: var(--dark) !important;
+}
+
+.modal-overlay .gift-card::after {
+  display: none;
+}
+
+.modal-overlay .card-image {
+  width: 100%;
+  height: 230px;
+  overflow: hidden;
+}
+
+.modal-overlay .card-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.modal-close {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  width: 40px;
+  height: 40px;
+  border: none;
+  background: none;
+  cursor: pointer;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
+}
+
+.modal-close {
+  cursor: pointer !important;
+  background: none !important;
+}
+
+.modal-close::before,
+.modal-close::after {
+  content: '';
+  position: absolute;
+  width: 24px;
+  height: 2px;
+  background-color: var(--dark) !important;
+  transform-origin: center;
+}
+
+.modal-close::before {
+  transform: rotate(45deg);
+}
+
+.modal-close::after {
+  transform: rotate(-45deg);
+}
+
+.modal-close:hover{
+  scale: 1.1;
+}
+.superpower-values {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+
+.modal-overlay .card-content {
+  height: auto;
+  padding: 20px;
+}
+
+.modal-overlay .card-title {
+    margin-bottom: 0px;
+}
+
+.modal-overlay .card-description {
+  font-size: 14px;
+  line-height: 1.5;
+  color: var(--dark);
+letter-spacing: 0.04em;
+}
+
+.modal-overlay .card-superpowers {
+  margin-top: 16px;
+}
+
+.modal-overlay .card-superpowers h3 {
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  margin-bottom: 8px;
+  color: var(--dark);
+}
+
+.modal-overlay .card-superpowers ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  width: 100%;
+  justify-content: flex-start;
+  align-items: flex-start;
+  flex-direction: column;
+}
+
+.modal-overlay .card-superpowers li {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 16px;
+  line-height: 1.5;
+  color: var(--dark);
+  letter-spacing: 0.04em;
+  text-transform: capitalize;
+  list-style-type: none;
+}
+
+.modal-overlay .card-superpowers li::before {
+  content: none;
+}
+
+.superpower-rating {
+  display: flex;
+  gap: 8px;
+}
+
+.superpower-star {
+  width: 16px;
+  height: 16px;
+  color: var(--primary);
+  opacity: 0.5;
+}
+
+.superpower-star.active {
+  color: var(--primary);
+  opacity: 1;
+}
+
+.superpower-value {
+white-space: nowrap;
+flex-shrink: 0;
+display: flex;
+    gap: 8px;
+}
+
+.modal-overlay .gift-card-content {
+  border-radius: 20px;
+  overflow: hidden;
+}
