@@ -5,12 +5,6 @@ export class Modal {
   }
 
   createModal() {
-    const existingModal = document.querySelector('.modal-overlay');
-    if (existingModal) {
-      this.modal = existingModal;
-      return;
-    }
-
     const modalHTML = `
       <div class="modal-overlay">
         <div class="gift-card">
@@ -30,24 +24,33 @@ export class Modal {
       </div>
     `;
 
+    const existingModal = document.querySelector('.modal-overlay');
+    if (existingModal) {
+      existingModal.remove();
+    }
+
     document.body.insertAdjacentHTML('beforeend', modalHTML);
     this.modal = document.querySelector('.modal-overlay');
-    
     this.modalImage = this.modal.querySelector('.card-image img');
     this.modalTag = this.modal.querySelector('.card-tag');
     this.modalTitle = this.modal.querySelector('.card-title');
     this.modalDescription = this.modal.querySelector('.card-description');
     this.modalSuperpowers = this.modal.querySelector('.card-superpowers');
     this.closeButton = this.modal.querySelector('.modal-close');
+  }
 
-    console.log('Modal elements:', {
-      modal: this.modal,
-      image: this.modalImage,
-      tag: this.modalTag,
-      title: this.modalTitle,
-      description: this.modalDescription,
-      superpowers: this.modalSuperpowers,
-      closeButton: this.closeButton
+  bindEvents() {
+    this.modal.addEventListener('click', (e) => {
+      if (e.target.classList.contains('modal-overlay') || 
+          e.target.classList.contains('modal-close')) {
+        this.close();
+      }
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        this.close();
+      }
     });
   }
 
@@ -72,10 +75,10 @@ export class Modal {
       
       return `<li>
         <span class="superpower-name">${key}</span>
-       <div class="superpower-values">
-        <span class="superpower-value">${value}</span>
-        <div class="superpower-rating">${stars}</div>
-       </div>
+        <div class="superpower-values">
+          <span class="superpower-value">${value}</span>
+          <div class="superpower-rating">${stars}</div>
+        </div>
       </li>`;
     });
 
@@ -93,20 +96,5 @@ export class Modal {
   close() {
     this.modal.classList.remove('active');
     document.body.style.overflow = '';
-  }
-
-  bindEvents() {
-    this.modal.addEventListener('click', (e) => {
-      if (e.target.classList.contains('modal-overlay') || 
-          e.target.classList.contains('modal-close')) {
-        this.close();
-      }
-    });
-
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape') {
-        this.close();
-      }
-    });
   }
 } 
