@@ -169,18 +169,26 @@ document.addEventListener('DOMContentLoaded', function () {
 
   const backToTop = document.querySelector('.back-to-top');
   if (backToTop) {
-    window.addEventListener('scroll', function () {
-      if (window.scrollY > 300) {
-        backToTop.style.display = 'block';
-      } else {
-        backToTop.style.display = 'none';
+    let ticking = false;
+
+    window.addEventListener('scroll', () => {
+      if (!ticking) {
+        requestAnimationFrame(() => {
+          if (window.innerWidth <= 768 && window.scrollY > 300) {
+            backToTop.style.display = 'flex';
+          } else {
+            backToTop.style.display = 'none';
+          }
+          ticking = false;
+        });
+        ticking = true;
       }
     });
 
-    backToTop.addEventListener('click', function () {
+    backToTop.addEventListener('click', () => {
       window.scrollTo({
         top: 0,
-        behavior: 'smooth',
+        behavior: 'smooth'
       });
     });
   }

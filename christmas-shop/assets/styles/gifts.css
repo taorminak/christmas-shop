@@ -490,6 +490,8 @@ h1 {
   cursor: pointer;
   display: none;
   z-index: 100;
+  justify-content: center;
+  align-items: center;
 }
 
 .back-to-top img {
