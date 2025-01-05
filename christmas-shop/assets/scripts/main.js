@@ -28,6 +28,9 @@ document.addEventListener('DOMContentLoaded', function () {
     navItems.forEach(item => {
       item.addEventListener('click', (e) => {
         const href = item.getAttribute('href');
+        if (href === window.location.pathname) {
+          e.preventDefault();
+        }
         toggleMenu(false);
       });
     });
@@ -183,53 +186,135 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 
   function updateTimer() {
-    const now = new Date();
-    const utcNow = new Date(now.getTime() + now.getTimezoneOffset() * 60000);
-    const currentYear = utcNow.getUTCFullYear();
-    const newYear = new Date(Date.UTC(currentYear + 1, 0, 1));
-    const diff = newYear - utcNow;
+    const timerElements = {
+      days: document.getElementById('days'),
+      hours: document.getElementById('hours'),
+      minutes: document.getElementById('minutes'),
+      seconds: document.getElementById('seconds')
+    };
 
-    const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-    const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-    const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-    const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+    if (Object.values(timerElements).every(element => element)) {
+      const now = new Date();
+      const utcNow = new Date(now.getTime() + now.getTimezoneOffset() * 60000);
+      const currentYear = utcNow.getUTCFullYear();
+      const newYear = new Date(Date.UTC(currentYear + 1, 0, 1));
+      const diff = newYear - utcNow;
 
-    document.getElementById('days').textContent = days;
-    document.getElementById('hours').textContent = hours;
-    document.getElementById('minutes').textContent = minutes;
-    document.getElementById('seconds').textContent = seconds;
+      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+
+      timerElements.days.textContent = days;
+      timerElements.hours.textContent = hours;
+      timerElements.minutes.textContent = minutes;
+      timerElements.seconds.textContent = seconds;
+    }
   }
 
-  updateTimer();
-  setInterval(updateTimer, 1000);
+  if (document.getElementById('days')) {
+    updateTimer();
+    setInterval(updateTimer, 1000);
+  }
 
-  function shuffleBestGifts() {
-    const bestGiftsContainer = document.querySelector('.gift-cards');
-    if (!bestGiftsContainer) return;
+  function loadGiftCards() {
+    function createGiftCardHTML(card) {
+      return `
+        <div class="gift-card ${card.tagClass}">
+          <div class="card-image">
+            <img src="${card.image}" alt="${card.tag.toLowerCase()}" >
+          </div>
+          <div class="card-content">
+            <span class="card-tag ${card.tagClass}">${card.tag}</span>
+            <h3 class="card-title">${card.title}</h3>
+          </div>
+        </div>
+      `;
+    }
 
-    fetch('assets/data/gift-cards.json')
+    fetch('assets/data/gifts.json')
       .then(response => response.json())
       .then(data => {
-        const shuffledCards = [...data.cards]
-          .sort(() => Math.random() - 0.5)
-          .slice(0, 4);
+    
+        const bestGiftsContainer = document.querySelector('.gift-cards');
+        if (bestGiftsContainer) {
+          const shuffledCards = [...data]
+            .sort(() => Math.random() - 0.5)
+            .slice(0, 4)
+            .map(card => ({
+              image: `assets/images/gift-for-${card.category.split(' ')[1].toLowerCase()}.png`,
+              tagClass: card.category.split(' ')[1].toLowerCase(),
+              tag: card.category.toUpperCase(),
+              title: card.name
+            }));
 
-        bestGiftsContainer.innerHTML = shuffledCards
-          .map(card => `
-            <div class="gift-card ${card.tagClass}">
-              <div class="card-image">
-                <img src="${card.image}" alt="${card.tag.toLowerCase()}" >
-              </div>
-              <div class="card-content">
-                <span class="card-tag ${card.tagClass}">${card.tag}</span>
-                <h3 class="card-title">${card.title}</h3>
-              </div>
-            </div>
-          `)
-          .join('');
+          bestGiftsContainer.innerHTML = shuffledCards
+            .map(createGiftCardHTML)
+            .join('');
+        }
+
+        const giftsContainer = document.querySelector('.gifts .gift-cards, .gifts, main .gift-cards');
+        const filterTabs = document.querySelector('.filter-tabs, .filters');
+        
+        if (giftsContainer) {
+          console.log('Gifts container:', giftsContainer);
+          console.log('Filter tabs:', filterTabs);
+        }
+        
+        if (giftsContainer && filterTabs) {
+          const categories = [
+            { id: 'all', name: 'ALL' },
+            { id: 'work', name: 'FOR WORK' },
+            { id: 'health', name: 'FOR HEALTH' },
+            { id: 'harmony', name: 'FOR HARMONY' }
+          ];
+
+          filterTabs.innerHTML = categories
+            .map(category => `
+              <button class="filter-tab ${category.id === 'all' ? 'active' : ''}" 
+                      data-category="${category.id}">
+                ${category.name}
+              </button>
+            `)
+            .join('');
+
+          const processedCards = data.map(card => ({
+            image: `assets/images/gift-for-${card.category.split(' ')[1].toLowerCase()}.png`,
+            tagClass: card.category.split(' ')[1].toLowerCase(),
+            tag: card.category.toUpperCase(),
+            title: card.name
+          }));
+
+          giftsContainer.innerHTML = processedCards
+            .map(createGiftCardHTML)
+            .join('');
+
+          filterTabs.addEventListener('click', (e) => {
+            if (e.target.classList.contains('filter-tab')) {
+              e.preventDefault();
+              e.stopPropagation();
+              
+              const category = e.target.dataset.category;
+              
+              filterTabs.querySelectorAll('.filter-tab').forEach(tab => {
+                tab.classList.toggle('active', tab === e.target);
+              });
+
+              const filteredCards = category === 'all' 
+                ? processedCards 
+                : processedCards.filter(card => card.tagClass === category);
+
+              giftsContainer.innerHTML = filteredCards
+                .map(createGiftCardHTML)
+                .join('');
+            }
+          });
+        }
       })
-      .catch(error => console.error('Error loading gift cards:', error));
+      .catch(error => {
+        console.error('Error loading gift cards:', error);
+      });
   }
 
-  shuffleBestGifts();
+  loadGiftCards();
 });
