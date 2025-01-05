@@ -202,4 +202,34 @@ document.addEventListener('DOMContentLoaded', function () {
 
   updateTimer();
   setInterval(updateTimer, 1000);
+
+  function shuffleBestGifts() {
+    const bestGiftsContainer = document.querySelector('.gift-cards');
+    if (!bestGiftsContainer) return;
+
+    fetch('assets/data/gift-cards.json')
+      .then(response => response.json())
+      .then(data => {
+        const shuffledCards = [...data.cards]
+          .sort(() => Math.random() - 0.5)
+          .slice(0, 4);
+
+        bestGiftsContainer.innerHTML = shuffledCards
+          .map(card => `
+            <div class="gift-card ${card.tagClass}">
+              <div class="card-image">
+                <img src="${card.image}" alt="${card.tag.toLowerCase()}" >
+              </div>
+              <div class="card-content">
+                <span class="card-tag ${card.tagClass}">${card.tag}</span>
+                <h3 class="card-title">${card.title}</h3>
+              </div>
+            </div>
+          `)
+          .join('');
+      })
+      .catch(error => console.error('Error loading gift cards:', error));
+  }
+
+  shuffleBestGifts();
 });
