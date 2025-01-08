@@ -1,0 +1,106 @@
+.burger-menu {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  width: 20px;
+  height: 20px;
+  position: relative;
+  z-index: 99;
+  margin-right: 10px;
+  margin-top: 10px;
+}
+
+.burger-line,
+.burger-line::before {
+  display: block;
+  width: 20px;
+  height: 1.5px;
+  background-color: var(--dark);
+  position: absolute;
+  transition: transform 0.3s ease-in-out, top 0.3s ease-in-out;
+}
+
+.burger-line {
+  top: 50%;
+  transform: translateY(-50%);
+  transition: transform 0.3s ease-in-out;
+}
+
+.burger-line::before {
+  content: '';
+  top: -8px;
+  transition: transform 0.3s ease-in-out, top 0.3s ease-in-out;
+}
+
+/* Активное состояние (крестик) */
+.burger-menu.active .burger-line {
+  transform: translateY(-50%) rotate(45deg);
+  transition: transform 0.3s ease-in-out;
+}
+
+.burger-menu.active .burger-line::before {
+  transform: rotate(-90deg);
+  top: 0;
+  transition: transform 0.3s ease-in-out, top 0.3s ease-in-out;
+}
+
+/* Неактивное состояние (бургер) */
+.burger-menu:not(.active) .burger-line {
+  transform: translateY(-50%) rotate(0);
+  transition: transform 0.3s ease-in-out;
+}
+
+.burger-menu:not(.active) .burger-line::before {
+  transform: rotate(0);
+  top: -8px;
+  transition: transform 0.3s ease-in-out, top 0.3s ease-in-out;
+}
+
+@media (max-width: 768px) {
+  .burger-menu {
+    display: block;
+  }
+
+  .nav-links {
+    display: flex;
+    position: fixed;
+    top: 64px;
+    right: -100%;
+    width: 100%;
+    height: calc(100vh - 64px);
+    background-color: var(--static-white);
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    transition: right 0.3s ease-in-out;
+    z-index: 98;
+    gap: 40px;
+    padding: 0;
+  }
+
+  .nav-links.active {
+    right: 0;
+  }
+
+  .nav-links a {
+    font-size: 18px;
+    line-height: 24px;
+  }
+
+  body.menu-open {
+    overflow: hidden;
+  }
+}
+
+@media (min-width: 769px) {
+  .burger-menu {
+    display: none !important;
+  }
+  
+  .nav-links {
+    display: flex !important;
+    gap: 40px;
+  }
+} 
