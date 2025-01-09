@@ -29,8 +29,7 @@
 }
 
 .modal-overlay .card-title,
-.modal-overlay .card-title:hover
- {
+.modal-overlay .card-title:hover {
   transform: none !important;
   transition: none !important;
   cursor: default;
@@ -92,7 +91,7 @@
   transform: rotate(-45deg);
 }
 
-.modal-close:hover{
+.modal-close:hover {
   scale: 1.1;
 }
 .superpower-values {
@@ -102,21 +101,20 @@
   gap: 8px;
 }
 
-
 .modal-overlay .card-content {
   height: auto;
   padding: 20px;
 }
 
 .modal-overlay .card-title {
-    margin-bottom: 0px;
+  margin-bottom: 0px;
 }
 
 .modal-overlay .card-description {
   font-size: 14px;
   line-height: 1.5;
   color: var(--dark);
-letter-spacing: 0.04em;
+  letter-spacing: 0.04em;
 }
 
 .modal-overlay .card-superpowers {
@@ -176,10 +174,10 @@ letter-spacing: 0.04em;
 }
 
 .superpower-value {
-white-space: nowrap;
-flex-shrink: 0;
-display: flex;
-    gap: 8px;
+  white-space: nowrap;
+  flex-shrink: 0;
+  display: flex;
+  gap: 8px;
 }
 
 .modal-overlay .gift-card-content {

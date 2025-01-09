@@ -40,14 +40,16 @@ export class Modal {
   }
 
   bindEvents() {
-    this.modal.addEventListener('click', (e) => {
-      if (e.target.classList.contains('modal-overlay') || 
-          e.target.classList.contains('modal-close')) {
+    this.modal.addEventListener('click', e => {
+      if (
+        e.target.classList.contains('modal-overlay') ||
+        e.target.classList.contains('modal-close')
+      ) {
         this.close();
       }
     });
 
-    document.addEventListener('keydown', (e) => {
+    document.addEventListener('keydown', e => {
       if (e.key === 'Escape') {
         this.close();
       }
@@ -67,20 +69,26 @@ export class Modal {
     this.modalTitle.textContent = giftData.title;
     this.modalDescription.textContent = giftData.description;
 
-    const superpowers = Object.entries(giftData.superpowers).map(([key, value]) => {
-      const rating = parseInt(value.replace('+', '')) / 100;
-      const stars = Array(5).fill().map((_, i) => 
-        `<img class="superpower-star ${i < rating ? 'active' : ''}" src="assets/images/snowflake.svg" width="16" height="16" alt="snowflake">`
-      ).join('');
-      
-      return `<li>
+    const superpowers = Object.entries(giftData.superpowers).map(
+      ([key, value]) => {
+        const rating = parseInt(value.replace('+', '')) / 100;
+        const stars = Array(5)
+          .fill()
+          .map(
+            (_, i) =>
+              `<img class="superpower-star ${i < rating ? 'active' : ''}" src="assets/images/snowflake.svg" width="16" height="16" alt="snowflake">`
+          )
+          .join('');
+
+        return `<li>
         <span class="superpower-name">${key}</span>
         <div class="superpower-values">
           <span class="superpower-value">${value}</span>
           <div class="superpower-rating">${stars}</div>
         </div>
       </li>`;
-    });
+      }
+    );
 
     this.modalSuperpowers.innerHTML = `
       <h3>ADDS SUPERPOWERS TO:</h3>
@@ -97,4 +105,4 @@ export class Modal {
     this.modal.classList.remove('active');
     document.body.style.overflow = '';
   }
-} 
+}

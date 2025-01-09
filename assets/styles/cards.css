@@ -109,10 +109,10 @@
 }
 
 .card-superpowers h3 {
-    font-size: 18px;
-    font-weight: 600;
-    color: var(--static-black);
-    margin-bottom: 12px;
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--static-black);
+  margin-bottom: 12px;
 }
 
 .card-superpowers {
@@ -122,109 +122,109 @@
 }
 
 .card-superpowers ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    width: 100%;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  width: 100%;
 }
 
 .card-superpowers li {
-    line-height: 1.5;
-    color: var(--static-black);
-    position: relative;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
+  line-height: 1.5;
+  color: var(--static-black);
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
 }
 
 .gift-card {
-    max-width: 310px;
-    width: 100%;
-    height: 342px;
-    background-color: var(--content-bg);
-    color: var(--dark);
-    border-radius: 20px;
-    overflow: hidden;
-    transition: all 0.3s ease;
-    cursor: pointer;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+  max-width: 310px;
+  width: 100%;
+  height: 342px;
+  background-color: var(--content-bg);
+  color: var(--dark);
+  border-radius: 20px;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .gift-card:hover {
-    color: var(--primary);
+  color: var(--primary);
 }
 
 .gift-card:hover .card-title {
-    color: var(--primary);
+  color: var(--primary);
 }
 
 .card-image {
-    width: 310px;
-    height: 230px;
-    overflow: hidden;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  width: 310px;
+  height: 230px;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .card-image img {
-    display: block;
-    margin: 0 auto;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: center;
+  display: block;
+  margin: 0 auto;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
 }
 
 .card-content {
-    padding: 20px;
-    margin: 0;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: flex-start;
-    background-color: var(--static-white);
-    width: 100%;
-    height: 100px;
-    border-radius: 20px;
-    flex-grow: 1;
+  padding: 20px;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  background-color: var(--static-white);
+  width: 100%;
+  height: 100px;
+  border-radius: 20px;
+  flex-grow: 1;
 }
 
 .card-tag {
-    display: inline-block;
-    font-size: 12px;
-    font-weight: 600;
-    letter-spacing: 0.05em;
-    line-height: 130%;
-    text-transform: uppercase;
-    margin-bottom: 8px;
+  display: inline-block;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  line-height: 130%;
+  text-transform: uppercase;
+  margin-bottom: 8px;
 }
 
 .card-tag.work {
-    color: var(--tag-purple);
+  color: var(--tag-purple);
 }
 
 .card-tag.health {
-    color: var(--tag-green);
+  color: var(--tag-green);
 }
 
 .card-tag.harmony {
-    color: var(--tag-pink);
+  color: var(--tag-pink);
 }
 
 .card-title {
-    color: var(--dark);
-    margin-bottom: 16px;
-    text-transform: uppercase;
-    font-style: normal;
-    font-family: var(--base-font-family);
-    font-size: var(--h3-font-size);
-    line-height: var(--h3-line-height);
-    letter-spacing: var(--h3-letter-spacing);
-    font-weight: var(--base-font-weight);
+  color: var(--dark);
+  margin-bottom: 16px;
+  text-transform: uppercase;
+  font-style: normal;
+  font-family: var(--base-font-family);
+  font-size: var(--h3-font-size);
+  line-height: var(--h3-line-height);
+  letter-spacing: var(--h3-letter-spacing);
+  font-weight: var(--base-font-weight);
 }
 
 @media screen and (max-width: 1060px) {
@@ -253,4 +253,4 @@
   .card-title {
     font-size: 14px;
   }
-} 
+}

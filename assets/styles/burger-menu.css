@@ -19,7 +19,9 @@
   height: 1.5px;
   background-color: var(--dark);
   position: absolute;
-  transition: transform 0.3s ease-in-out, top 0.3s ease-in-out;
+  transition:
+    transform 0.3s ease-in-out,
+    top 0.3s ease-in-out;
 }
 
 .burger-line {
@@ -31,7 +33,9 @@
 .burger-line::before {
   content: '';
   top: -8px;
-  transition: transform 0.3s ease-in-out, top 0.3s ease-in-out;
+  transition:
+    transform 0.3s ease-in-out,
+    top 0.3s ease-in-out;
 }
 
 /* Активное состояние (крестик) */
@@ -43,7 +47,9 @@
 .burger-menu.active .burger-line::before {
   transform: rotate(-90deg);
   top: 0;
-  transition: transform 0.3s ease-in-out, top 0.3s ease-in-out;
+  transition:
+    transform 0.3s ease-in-out,
+    top 0.3s ease-in-out;
 }
 
 /* Неактивное состояние (бургер) */
@@ -55,7 +61,9 @@
 .burger-menu:not(.active) .burger-line::before {
   transform: rotate(0);
   top: -8px;
-  transition: transform 0.3s ease-in-out, top 0.3s ease-in-out;
+  transition:
+    transform 0.3s ease-in-out,
+    top 0.3s ease-in-out;
 }
 
 @media (max-width: 768px) {
@@ -98,9 +106,9 @@
   .burger-menu {
     display: none !important;
   }
-  
+
   .nav-links {
     display: flex !important;
     gap: 40px;
   }
-} 
+}
