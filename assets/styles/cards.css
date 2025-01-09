@@ -47,8 +47,6 @@
 }
 
 .gift-card {
-  width: 310px;
-  height: 342px;
   border-radius: 20px;
   overflow: hidden;
   cursor: pointer;
@@ -142,6 +140,7 @@
 
 .gift-card {
     max-width: 310px;
+    width: 100%;
     height: 342px;
     background-color: var(--content-bg);
     color: var(--dark);
@@ -236,6 +235,10 @@
   .gift-cards {
     grid-template-columns: 1fr 1fr;
   }
+
+  .gift-card {
+    width: 100%;
+  }
 }
 
 @media screen and (max-width: 767px) {
@@ -245,5 +248,9 @@
 
   .gift-cards {
     grid-template-columns: 1fr;
+  }
+
+  .card-title {
+    font-size: 14px;
   }
 } 
